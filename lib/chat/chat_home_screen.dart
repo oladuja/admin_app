@@ -41,7 +41,9 @@ class _ChatHomeScreenState extends State<ChatHomeScreen> {
                       messageIds.add(element.id);
                     }
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(child: Text('Loading'));
+                      return const Center(
+                        child: Text('Loading'),
+                      );
                     }
 
                     if (snapshot.data == null) {
@@ -66,9 +68,10 @@ class _ChatHomeScreenState extends State<ChatHomeScreen> {
                     }
                     return const Center(child: CircularProgressIndicator());
                   } catch (e) {
-                    return const Center(
-                      child: Center(child: Text('An Error has occurred')),
-                    );
+                    return  Container();
+                    // return const Center(
+                    //   child: Text('An Error has occurred'),
+                    // );
                   }
                 },
               ),

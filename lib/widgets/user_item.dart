@@ -34,11 +34,11 @@ class UserItem extends StatelessWidget {
             future: getlastMessage(id),
             builder: (context, snapshot) {
               if (snapshot.data == null) {
-                return const Center(child: Text('No messages yet'));
+                return Container();
               }
 
               if (snapshot.hasError) {
-                return const Center(child: Text('An error has occured'));
+                return const Center(child: Text('An error has occured'),);
               }
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(child: Text('Loading'));
@@ -94,18 +94,19 @@ class UserItem extends StatelessWidget {
                       trailing: Column(
                         children: [
                           LastMessageTime(
-                              time: snapshot.data!.data()!['timeOfLastMessage']),
-                          const Spacer(),
-                          CircleAvatar(
-                            radius: 12,
-                            backgroundColor:
-                                const Color.fromARGB(255, 211, 59, 206)
-                                    .withOpacity(0.96),
-                            child:  Text(
-                              Random().nextInt(3).toString(),
-                              style: const TextStyle(color: Colors.white),
-                            ),
-                          )
+                              time:
+                                  snapshot.data!.data()!['timeOfLastMessage']),
+                          // const Spacer(),
+                          // CircleAvatar(
+                          //   radius: 12,
+                          //   backgroundColor:
+                          //       const Color.fromARGB(255, 211, 59, 206)
+                          //           .withOpacity(0.96),
+                          //   child: Text(
+                          //     Random().nextInt(3).toString(),
+                          //     style: const TextStyle(color: Colors.white),
+                          //   ),
+                          // ),
                         ],
                       ),
                     ),
@@ -122,7 +123,6 @@ class UserItem extends StatelessWidget {
     );
   }
 }
-
 
 class LastMessageTime extends StatefulWidget {
   const LastMessageTime({
